@@ -27,5 +27,5 @@ livenessProbe:
 readinessProbe:
   path: /healthz
 
-configmap:
-  data: "version: latest"
+# configmap:
+#   data: "version: latest"

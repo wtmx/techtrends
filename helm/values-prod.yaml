@@ -3,9 +3,9 @@ namespace:
  
 service:
   port: 7111
-  # targetPort: 3111
-  # protocol: TCP
-  # type: ClusterIP
+  targetPort: 3111
+  protocol: TCP
+  type: ClusterIP
 
 image:
   repository: techtrends 
@@ -22,13 +22,13 @@ resources:
     cpu: 500m
     memory: 256Mi
 
-# containerPort: 3111
+containerPort: 3111
 
-# livenessProbe:
-#   path: /healthz
+livenessProbe:
+  path: /healthz
 
-# readinessProbe:
-#   path: /healthz
+readinessProbe:
+  path: /healthz
 
 # configmap:
 #   data: "version: latest"

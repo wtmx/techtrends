@@ -3,14 +3,14 @@ namespace:
  
 service:
   port: 5111
-  # targetPort: 3111
-  # protocol: TCP
-  # type: ClusterIP
+  targetPort: 3111
+  protocol: TCP
+  type: ClusterIP
 
 image:
   repository: techtrends 
   tag: latest
-  # pullPolicy: IfNotPresent
+  pullPolicy: IfNotPresent
 
 replicaCount: 3
 
@@ -22,13 +22,13 @@ resources:
     cpu: 500m
     memory: 128Mi
 
-# containerPort: 3111
+containerPort: 3111
 
-# livenessProbe:
-#   path: /healthz
+livenessProbe:
+  path: /healthz
 
-# readinessProbe:
-#   path: /healthz
+readinessProbe:
+  path: /healthz
 
 # configmap:
 #   data: "version: latest"
