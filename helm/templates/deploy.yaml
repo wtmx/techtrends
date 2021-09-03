@@ -52,4 +52,8 @@ spec:
         ## CPU and memory is allocated for a pod. In this example, 
         ## the pod will be allocated with 64 Mebibytes and 250 miliCPUs.
           requests:
-{{ toYaml .Values.resources | indent 12 }}
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
+          limits:
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}
