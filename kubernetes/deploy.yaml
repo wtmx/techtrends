@@ -1,31 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: techtrends
-    tag: latest
   name: techtrends
   namespace: sandbox
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: techtrends
-      tag: latest
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+      name: techtrends
   template:
     metadata:
       labels:
-        app: techtrends
-        tag: latest
+        name: techtrends
     spec:
       containers:
-      - image: techtrends:latest
-        imagePullPolicy: IfNotPresent
+      - image: wtmx/techtrends:latest
+        imagePullPolicy: Always
         name: techtrends
         ## Expose the port the container is listening on.
         ## For example, exposing the application port 6112 via TCP.
