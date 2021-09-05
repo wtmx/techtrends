@@ -56,7 +56,7 @@ def post(post_id):
     post = get_post(post_id)
     if post is None:
         # log line
-        logging.info('Article does not exist!')
+        logging.error('Article does not exist!')
         return render_template('404.html'), 404
     else:
         # log line
