@@ -4,12 +4,8 @@ namespace:
 service:
   port: 7111
   targetPort: 3111
-  protocol: TCP
-  type: ClusterIP
 
 image:
-  repository: wtmx/techtrends
-  tag: latest
   pullPolicy: Always
 
 replicaCount: 5
@@ -23,12 +19,3 @@ resources:
     memory: 256Mi
 
 containerPort: 3111
-
-livenessProbe:
-  path: /healthz
-
-readinessProbe:
-  path: /healthz
-
-# configmap:
-#   data: "version: latest"
