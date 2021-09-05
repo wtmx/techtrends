@@ -25,6 +25,16 @@ def get_post(post_id):
     connection.close()
     return post
 
+# Function to check if database connection is made
+def check_health():
+    try:
+        connection = get_db_connection()
+        connection.execute('SELECT 1 FROM posts').fetchone()
+        return True
+    except Exception as e:
+        print('Exception: {0}'.format(e))
+        return False
+
 # Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
@@ -83,17 +93,25 @@ def create():
 
     return render_template('create.html')
 
-# Define the health status check for the app
+# Define the dynamic health status check for the app
 @app.route('/healthz')
 def healthz():
-    response = app.response_class(
+    if check_health():
+        response = app.response_class(
             response=json.dumps({"result":"OK - healthy"}),
             status=200,
             mimetype='application/json'
-    )
-
-    # log line
-    app.logger.info('Status request successful')
+            )
+        # log line
+        app.logger.info('Status request successful')
+    else:
+        response = app.response_class(
+            response=json.dumps({"result":"ERROR - unhealthy"}),
+            status=500,
+            mimetype='application/json'
+            )
+        # log line
+        app.logger.info('Status request unsuccessful')
     return response
 
 # Define the metrics check for the app
@@ -113,6 +131,14 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-    # stream logs to app.log file
-    logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+    # set logger to handle STDOUT and STDERR 
+    stdout_handler =  logging.StreamHandler(sys.stdout)
+    stderr_handler =  logging.StreamHandler(sys.stderr) 
+    handlers = [stderr_handler, stdout_handler]
+    
+    # format output for app.log file
+    format_output = '%(asctime)s: %(levelname)s %(name)s %(message)s'
+    logging.basicConfig(format=format_output, level=logging.DEBUG, handlers=handlers)
+    
+    # logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     app.run(host='0.0.0.0', port='3111')

@@ -5,7 +5,7 @@ docker build -t techtrends .
 docker run -d -p 7111:3111 techtrends
 
 ## Docker commands used to get the application logs
-docker logs a3b66c48ca6e
+docker logs de3ba6f7dbf4533089a25275e316c29564d3f063c4dc00479685840f2d306c32
 
 ## Logs from the container running the TechTrends application
  * Serving Flask app "app" (lazy loading)
@@ -25,22 +25,21 @@ PS C:\Users\Wilson\Documents\Udacity\Cloud Native Fundamentals\nd064_course_1-ma
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: off
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:39:52] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:39:53] "GET /static/css/main.css HTTP/1.1" 200 -
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:39:53] "GET /favicon.ico HTTP/1.1" 404 -
-INFO:root:"About Us" page was retrieved
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:40:08] "GET /about HTTP/1.1" 200 -
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:40:43] "GET /create HTTP/1.1" 200 -
-INFO:root:New article "test1" was created
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:40:49] "POST /create HTTP/1.1" 302 -
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:40:49] "GET / HTTP/1.1" 200 -
-INFO:root:Existing article "test1" was retrieved!
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:40:54] "GET /7 HTTP/1.1" 200 -
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:40:58] "GET / HTTP/1.1" 200 -
-INFO:app:Status request successful
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:41:06] "GET /healthz HTTP/1.1" 200 -
-INFO:app:Metrics request successful
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:41:12] "GET /metrics HTTP/1.1" 200 -
-INFO:root:Article does not exist!
-INFO:werkzeug:172.17.0.1 - - [28/Aug/2021 11:41:17] "GET /111 HTTP/1.1" 404 -
+2021-09-05 07:23:37,173: INFO werkzeug  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+2021-09-05 07:23:54,024: INFO werkzeug 172.17.0.1 - - [05/Sep/2021 07:23:54] "GET / HTTP/1.1" 200 -
+2021-09-05 07:23:58,424: INFO root "About Us" page was retrieved
+2021-09-05 07:23:58,428: INFO werkzeug 172.17.0.1 - - [05/Sep/2021 07:23:58] "GET /about HTTP/1.1" 200 -
+2021-09-05 07:24:00,714: INFO werkzeug 172.17.0.1 - - [05/Sep/2021 07:24:00] "GET /create HTTP/1.1" 200 -
+2021-09-05 07:24:04,819: INFO root New article "test1" was created
+2021-09-05 07:24:04,820: INFO werkzeug 172.17.0.1 - - [05/Sep/2021 07:24:04] "POST /create HTTP/1.1" 302 -
+2021-09-05 07:24:04,828: INFO werkzeug 172.17.0.1 - - [05/Sep/2021 07:24:04] "GET / HTTP/1.1" 200 -
+2021-09-05 07:24:06,893: INFO root Existing article "test1" was retrieved!
+2021-09-05 07:24:06,898: INFO werkzeug 172.17.0.1 - - [05/Sep/2021 07:24:06] "GET /7 HTTP/1.1" 200 -
+2021-09-05 07:24:09,614: INFO root Article does not exist!
+2021-09-05 07:24:09,618: INFO werkzeug 172.17.0.1 - - [05/Sep/2021 07:24:09] "GET /777 HTTP/1.1" 404 -
+2021-09-05 07:24:14,328: INFO app Status request successful
+2021-09-05 07:24:14,328: INFO werkzeug 172.17.0.1 - - [05/Sep/2021 07:24:14] "GET /healthz HTTP/1.1" 200 -
+2021-09-05 07:24:19,236: INFO app Metrics request successful
+2021-09-05 07:24:19,237: INFO werkzeug 172.17.0.1 - - [05/Sep/2021 07:24:19] "GET /metrics HTTP/1.1" 200 -
+2021-09-05 07:26:06,500: INFO app Status request unsuccessful
+2021-09-05 07:26:06,502: INFO werkzeug 172.17.0.1 - - [05/Sep/2021 07:26:06] "GET /healthz HTTP/1.1" 500 -
